@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->bigInteger('boost_clock');
             $table->bigInteger('cache');
             $table->bigInteger('tdp');
-            $table->string('sockt');
+            $table->string('socket');
             $table->year('launch');
             $table->timestamps();
         });
