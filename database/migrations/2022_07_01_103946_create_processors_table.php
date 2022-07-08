@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('processors', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->bigInteger('price');
+            $table->bigInteger('core');
+            $table->bigInteger('thread');
+            $table->bigInteger('boost_clock');
+            $table->bigInteger('cache');
+            $table->bigInteger('tdp');
+            $table->string('sockt');
+            $table->year('launch');
             $table->timestamps();
         });
     }
