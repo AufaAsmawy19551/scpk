@@ -34,7 +34,7 @@ class ProcessorController extends Controller
         $costBenefit = ['n', 'n', 'c', 'b', 'b', 'b', 'b', 'c', 'n', 'n'];
         $cMin = [1000, 1000, 1000, 1000, 1000, 1000];
         $cMax = [0, 0, 0, 0, 0, 0];
-        $normalizeDatas = [];
+        $calculationResult = [];
 
         foreach ($processors as $processor) {
             $counter = 0;
@@ -96,13 +96,6 @@ class ProcessorController extends Controller
                     $data = $processor->launch;
                 }
 
-                // var_dump($data);
-
-                // $counter += 1;
-                // var_dump($counter);
-                // var_dump($weight[$counter]);
-
-
                 if ($costBenefit[$counterCostBenefits] == 'c') {
                     $valueOfCriteria =
                         ($cMin[$counter] / $data) * ($weight[$counter]);
@@ -121,17 +114,16 @@ class ProcessorController extends Controller
 
                 $counterCostBenefits += 1;
             }
-            array_push($dataProcessor, $score);
-            // var_dump($score);
 
-            array_push($normalizeDatas, $dataProcessor);
+            array_push($dataProcessor, $score);
+            array_push($calculationResult, $dataProcessor);
         }
 
-        // var_dump($cMin);
-        // var_dump($cMax);
-        // var_dump($normalizeDatas);
-        return json_encode($normalizeDatas);
+        // var_dump($calculationResult);
+
+        return view('compare', compact('product', 'calculationResult'));
     }
+
     // /**
     //  * Display a listing of the resource.
     //  *
