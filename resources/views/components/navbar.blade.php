@@ -9,13 +9,13 @@
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <li class="nav-item mx-2">
            <a class="nav-link {{ ($active === "Home") ? "active" : "" }} fs-4" href="/home">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mx-2">
             <a class="nav-link {{ ($active === "Compare") ? "active" : "" }} fs-4" href="/compare">Compare</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mx-2">
             <a class="nav-link {{ ($active === "About") ? "active" : "" }} fs-4" href="/about">About</a>
           </li>
         </ul>
