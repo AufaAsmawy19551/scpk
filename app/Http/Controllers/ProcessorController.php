@@ -9,70 +9,127 @@ class ProcessorController extends Controller
 {
     public function compareProcessors()
     {
+        $weight = [1, 2, 3, 4, 5, 6];
         $processors = Processor::all();
+        $criterias = [
+            'id',
+            'title',
+            'price',
+            'core',
+            'thread',
+            'boost_clock',
+            'cache',
+            'tdp',
+            'socket',
+            'launch',
+        ];
+        $calculatedCriterias = [
+            'price',
+            'core',
+            'thread',
+            'boost_clock',
+            'cache',
+            'tdp',
+        ];
         $costBenefit = ['n', 'n', 'c', 'b', 'b', 'b', 'b', 'c', 'n', 'n'];
         $cMin = [1000, 1000, 1000, 1000, 1000, 1000];
         $cMax = [0, 0, 0, 0, 0, 0];
-        $min = 0;
-        $max = 0;
+        $normalizeDatas = [];
 
         foreach ($processors as $processor) {
-            $price = $processor->price;
-            $core = $processor->core;
-            $thread = $processor->thread;
-            $boost_clock = $processor->boost_clock;
-            $cache = $processor->cache;
-            $tdp = $processor->tdp;
+            $counter = 0;
+            foreach ($calculatedCriterias as $calculatedCriteria) {
+                $data = '';
+                if ($calculatedCriteria == 'price') {
+                    $data = $processor->price;
+                } elseif ($calculatedCriteria == 'core') {
+                    $data = $processor->core;
+                } elseif ($calculatedCriteria == 'thread') {
+                    $data = $processor->thread;
+                } elseif ($calculatedCriteria == 'boost_clock') {
+                    $data = $processor->boost_clock;
+                } elseif ($calculatedCriteria == 'cache') {
+                    $data = $processor->cache;
+                } elseif ($calculatedCriteria == 'tdp') {
+                    $data = $processor->tdp;
+                }
 
-            if ($price > $cMax[0]) {
-                $cMax[0] = $price;
-            }else if ($price < $cMin[0]) {
-                $cMin[0] = $price;
+                if ($data > $cMax[$counter]) {
+                    $cMax[$counter] = $data;
+                } elseif ($data < $cMin[$counter]) {
+                    $cMin[$counter] = $data;
+                }
+
+                $counter += 1;
             }
-
-            if ($core > $cMax[1]) {
-                $cMax[1] = $core;
-            }else if ($core < $cMin[1]) {
-                $cMin[1] = $core;
-            }
-
-            if ($thread > $cMax[2]) {
-                $cMax[2] = $thread;
-            }else if ($thread < $cMin[2]) {
-                $cMin[2] = $thread;
-            }
-
-            if ($boost_clock > $cMax[3]) {
-                $cMax[3] = $boost_clock;
-            }else if ($boost_clock < $cMin[3]) {
-                $cMin[3] = $boost_clock;
-            }
-
-            if ($cache > $cMax[4]) {
-                $cMax[4] = $cache;
-            }else if ($cache < $cMin[4]) {
-                $cMin[4] = $cache;
-            }
-
-            if ($tdp > $cMax[5]) {
-                $cMax[5] = $tdp;
-            }else if ($tdp < $cMin[5]) {
-                $cMin[5] = $tdp;
-            }
-
-            // var_dump($price); 
-            // var_dump($core); 
-            // var_dump($thread); 
-            // var_dump($boost_clock); 
-            // var_dump($cache); 
-            // var_dump($tdp); 
-            // if (condition) {
-            //     # code...
-            // }
         }
 
-        var_dump($cMin); 
-        var_dump($cMax); 
+        // var_dump($cMin);
+        // var_dump($cMax);
+
+        foreach ($processors as $processor) {
+            $counterCostBenefits = 0;
+            $counter = 0;
+            $score = 0;
+            $dataProcessor = [];
+            foreach ($criterias as $criteria) {
+                $data = '';
+                if ($criteria == 'id') {
+                    $data = $processor->id;
+                } elseif ($criteria == 'title') {
+                    $data = $processor->title;
+                } elseif ($criteria == 'price') {
+                    $data = $processor->price;
+                } elseif ($criteria == 'core') {
+                    $data = $processor->core;
+                } elseif ($criteria == 'thread') {
+                    $data = $processor->thread;
+                } elseif ($criteria == 'boost_clock') {
+                    $data = $processor->boost_clock;
+                } elseif ($criteria == 'cache') {
+                    $data = $processor->cache;
+                } elseif ($criteria == 'tdp') {
+                    $data = $processor->tdp;
+                } elseif ($criteria == 'socket') {
+                    $data = $processor->socket;
+                } elseif ($criteria == 'launch') {
+                    $data = $processor->launch;
+                }
+
+                // var_dump($data);
+
+                // $counter += 1;
+                // var_dump($counter);
+                // var_dump($weight[$counter]);
+
+
+                if ($costBenefit[$counterCostBenefits] == 'c') {
+                    $valueOfCriteria =
+                        ($cMin[$counter] / $data) * ($weight[$counter]);
+                    $score += $valueOfCriteria;
+                    array_push($dataProcessor, $valueOfCriteria);
+                    $counter += 1;
+                } elseif ($costBenefit[$counterCostBenefits] == 'b') {
+                    $valueOfCriteria =
+                        ($data / $cMax[$counter]) * ($weight[$counter]);
+                    $score += $valueOfCriteria;
+                    array_push($dataProcessor, $valueOfCriteria);
+                    $counter += 1;
+                } elseif ($costBenefit[$counterCostBenefits] == 'n') {
+                    array_push($dataProcessor, $data);
+                }
+
+                $counterCostBenefits += 1;
+            }
+            array_push($dataProcessor, $score);
+            // var_dump($score);
+
+            array_push($normalizeDatas, $dataProcessor);
+        }
+
+        // var_dump($cMin);
+        // var_dump($cMax);
+        var_dump($normalizeDatas);
     }
     // /**
     //  * Display a listing of the resource.
