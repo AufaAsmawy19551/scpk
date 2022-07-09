@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
+  <div class="container-fluid px-4">
     <a class="navbar-brand align-items-start fs-2 mx-0 my-0" href="#" style="max-width: 0px">
       <img src="storage/jellyfish.png" alt="" width="50" height="50" class="d-inline-block align-text-center">
       Pros
