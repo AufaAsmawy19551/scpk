@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
             'thread' => 16,
             'boost_clock' => 5.2,
             'cache' => 16,
-            'tdp' => 125 ,
+            'tdp' => 125,
             'socket' =>'LGA 1200',
             'launch' => 2021,
         ]);
@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
             'thread' => 16,
             'boost_clock' => 5.2,
             'cache' => 16,
-            'tdp' => 125 ,
+            'tdp' => 125,
             'socket' =>'LGA 1200',
             'launch' => 2021,
         ]);
@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
             'thread' => 16,
             'boost_clock' => 5.1,
             'cache' => 16,
-            'tdp' => 65 ,
+            'tdp' => 65,
             'socket' =>'LGA 1200',
             'launch' => 2021,
         ]);
@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
             'thread' => 16,
             'boost_clock' => 5.1,
             'cache' => 16,
-            'tdp' => 65 ,
+            'tdp' => 65,
             'socket' =>'LGA 1200',
             'launch' => 2021,
         ]);
@@ -90,7 +90,66 @@ class DatabaseSeeder extends Seeder
             'thread' => 16,
             'boost_clock' => 4.9,
             'cache' => 16,
-            'tdp' => 35 ,
+            'tdp' => 35,
+            'socket' =>'LGA 1200',
+            'launch' => 2021,
+        ]);
+
+        Processor::create([
+            'title' => 'Core i7	11700K',
+            'price' => 399,
+            'core' => 8,
+            'thread' => 16,
+            'boost_clock' => 5.0,
+            'cache' => 16,
+            'tdp' => 125,
+            'socket' =>'LGA 1200',
+            'launch' => 2021,
+        ]);
+        Processor::create([
+            'title' => 'Core i7	11700KF',
+            'price' => 374,
+            'core' => 8,
+            'thread' => 16,
+            'boost_clock' => 5.0,
+            'cache' => 16,
+            'tdp' => 125,
+            'socket' =>'LGA 1200',
+            'launch' => 2021,
+        ]);
+
+        Processor::create([
+            'title' => 'Core i7	11700',
+            'price' => 323,
+            'core' => 8,
+            'thread' => 16,
+            'boost_clock' => 4.9,
+            'cache' => 16,
+            'tdp' => 65,
+            'socket' =>'LGA 1200',
+            'launch' => 2021,
+        ]);
+
+        Processor::create([
+            'title' => 'Core i7	11700F',
+            'price' => 298,
+            'core' => 8,
+            'thread' => 16,
+            'boost_clock' => 4.9,
+            'cache' => 16,
+            'tdp' => 65,
+            'socket' =>'LGA 1200',
+            'launch' => 2021,
+        ]);
+
+        Processor::create([
+            'title' => 'Core i7	11700T',
+            'price' => 323,
+            'core' => 8,
+            'thread' => 16,
+            'boost_clock' => 4.6,
+            'cache' => 16,
+            'tdp' => 35,
             'socket' =>'LGA 1200',
             'launch' => 2021,
         ]);

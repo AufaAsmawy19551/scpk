@@ -41,7 +41,7 @@ class ProcessorController extends Controller
             'cache',
             'tdp',
         ];
-        $costBenefit = ['n', 'n', 'c', 'b', 'b', 'b', 'b', 'c', 'n', 'n'];
+        $costBenefit = ['n', 'n', 'c', 'b', 'b', 'b', 'b', 'b', 'n', 'n'];
         $cMin = [1000, 1000, 1000, 1000, 1000, 1000];
         $cMax = [0, 0, 0, 0, 0, 0];
         $calculationResults = [];
