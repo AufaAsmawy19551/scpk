@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/compare', [ProcessorController::class, 'compareProcessors']);
+Route::post('/compare/post', [ProcessorController::class, 'compareProcessors']);

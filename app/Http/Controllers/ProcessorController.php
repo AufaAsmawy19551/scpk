@@ -7,11 +7,19 @@ use Illuminate\Http\Request;
 
 class ProcessorController extends Controller
 {
-    public function compareProcessors()
+    public function compareProcessors(Request $request)
     {
+        
         $title = 'Compare';
         $active = 'Compare';
-        $weight = [1, 1, 1, 1, 1, 1];
+        $weight = [
+            $request->priceWeight ? $request->priceWeight : 1,
+            $request->coreWeight ? $request->coreWeight : 1,
+            $request->threadWeight ? $request->threadWeight : 1,
+            $request->boostClockWeight ? $request->boostClockWeight : 1,
+            $request->cacheWeight ? $request->cacheWeight : 1,
+            $request->tdpWeight ? $request->tdpWeight : 1,
+        ];
         $processors = Processor::all();
         $criterias = [
             'id',
@@ -159,6 +167,6 @@ class ProcessorController extends Controller
         // var_dump($calculationResults);
 
 
-        return view('pages.compare', compact('title', 'active', 'calculationResults'));
+        return view('pages.compare', compact('title', 'active', 'calculationResults', 'weight'));
     }
 }
