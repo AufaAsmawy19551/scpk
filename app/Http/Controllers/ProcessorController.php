@@ -9,6 +9,7 @@ class ProcessorController extends Controller
 {
     public function compareProcessors()
     {
+        $title = 'Compare';
         $weight = [1, 1, 1, 1, 1, 1];
         $processors = Processor::all();
         $criterias = [
@@ -121,7 +122,7 @@ class ProcessorController extends Controller
 
         // var_dump($calculationResult);
 
-        return view('compare', compact('product', 'calculationResult'));
+        return view('pages.compare', compact('title', 'processor', 'calculationResult'));
     }
 
     // /**
