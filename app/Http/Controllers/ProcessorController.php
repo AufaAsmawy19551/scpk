@@ -9,7 +9,7 @@ class ProcessorController extends Controller
 {
     public function compareProcessors()
     {
-        $weight = [1, 2, 3, 4, 5, 6];
+        $weight = [1, 1, 1, 1, 1, 1];
         $processors = Processor::all();
         $criterias = [
             'id',
@@ -129,7 +129,8 @@ class ProcessorController extends Controller
 
         // var_dump($cMin);
         // var_dump($cMax);
-        var_dump($normalizeDatas);
+        // var_dump($normalizeDatas);
+        return json_encode($normalizeDatas);
     }
     // /**
     //  * Display a listing of the resource.
