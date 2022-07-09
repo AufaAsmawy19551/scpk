@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->bigInteger('price');
             $table->bigInteger('core');
             $table->bigInteger('thread');
-            $table->bigInteger('boost_clock');
+            $table->float('boost_clock');
             $table->bigInteger('cache');
             $table->bigInteger('tdp');
             $table->string('socket');
