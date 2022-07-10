@@ -13,6 +13,27 @@ class ProcessorController extends Controller
         $title = 'Compare';
         $active = 'Compare';
 
+        $higestPrice = Processor::max('price');
+        $sockets = Processor::select('socket')->distinct()->get();
+        $launchs = Processor::select('launch')->distinct()->get();
+
+        $distincSockets = [];
+        foreach($sockets as $socket){
+            array_push($distincSockets, $socket->socket);
+        }
+
+        $distincLaunchs = [];
+        foreach($launchs as $launch){
+            array_push($distincLaunchs, $launch->launch);
+        }
+
+        $filter = [
+            'lowestPrice' => $request->lowestPrice,
+            'higestPrice' => $request->higestPrice,
+            'socket' => $request->socket,
+            'launch' => $request->launchYear,
+        ];
+
         $weight = [
             $request->priceWeight ? $request->priceWeight : 1,
             $request->coreWeight ? $request->coreWeight : 1,
@@ -22,20 +43,30 @@ class ProcessorController extends Controller
             $request->tdpWeight ? $request->tdpWeight : 1,
         ];
 
-        $filter = [
-            'lowestPrice' => $request->lowestPrice,
-            'higestPrice' => $request->higestPrice,
-            'socket' => $request->socket,
-            'launch' => $request->launchYear,
-        ];
-// where('socket', ['LGA 1200', "sdfghj"])
-        $processors = Processor::where('launch', [])->get();
-        $higestPrice = Processor::max('price');
-        $sockets = Processor::select('socket')->distinct()->get();
-        $launchs = Processor::select('launch')->distinct()->get();
+        $processors = Processor::where('launch', $request->launchYear == '' ? $distincLaunchs : $request->launchYear)->where('socket', $request->socket == '' ? $distincSockets : $request->socket)->get();
 
-        
+        $calculationResults = ProcessorController::calculateSAW($processors, $weight);
 
+        // var_dump($calculationResults);
+        // var_dump($sockets);
+        // var_dump($launchs);
+        // var_dump($request->socket);
+        // var_dump($processors);
+
+        return view('pages.compare', compact(
+            'title', 
+            'active', 
+            'calculationResults', 
+            'weight', 
+            'filter', 
+            'higestPrice',
+            'sockets', 
+            'launchs')
+        );
+    }
+
+    public function calculateSAW($processors, $weight)
+    {
         $criterias = [
             'id',
             'title',
@@ -58,7 +89,7 @@ class ProcessorController extends Controller
             'tdp',
         ];
 
-        $costBenefit = ['n', 'n', 'c', 'b', 'b', 'b', 'b', 'b', 'n', 'n'];
+        $costBenefit = ['n', 'n', 'c', 'b', 'b', 'b', 'b', 'c', 'n', 'n'];
         $cMin = [1000, 1000, 1000, 1000, 1000, 1000];
         $cMax = [0, 0, 0, 0, 0, 0];
         $calculationResults = [];
@@ -107,8 +138,8 @@ class ProcessorController extends Controller
             $boost_clock = 0;
             $cache = 0;
             $tdp = 0;
-            $socket = 0;
-            $launch = 0;
+            $socket = "";
+            $launch = "";
             
             foreach ($criterias as $criteria) {
                 $data;
@@ -181,21 +212,6 @@ class ProcessorController extends Controller
         $columns = array_column($calculationResults, 'score');
         array_multisort($columns, SORT_DESC, $calculationResults);
 
-        // var_dump($calculationResults);
-        // var_dump($sockets);
-        // var_dump($launchs);
-        // var_dump($request->socket);
-
-
-        return view('pages.compare', compact(
-            'title', 
-            'active', 
-            'calculationResults', 
-            'weight', 
-            'filter', 
-            'higestPrice',
-            'sockets', 
-            'launchs')
-        );
+        return $calculationResults;
     }
 }

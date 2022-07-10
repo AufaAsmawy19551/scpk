@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         //     'cache' =>,
         //     'tdp' =>,
         //     'socket' =>'',
-        //     'launch' =>,
+        //     'launch' =>
         // ]);
 
         Processor::create([
@@ -43,8 +43,8 @@ class DatabaseSeeder extends Seeder
             'boost_clock' => 5.2,
             'cache' => 16,
             'tdp' => 125,
-            'socket' =>'LGA 1200',
-            'launch' => 2021,
+            'socket' => 'LGA 1200',
+            'launch' => '2021'
         ]);
 
         Processor::create([
@@ -55,8 +55,8 @@ class DatabaseSeeder extends Seeder
             'boost_clock' => 5.2,
             'cache' => 16,
             'tdp' => 125,
-            'socket' =>'LGA 1200',
-            'launch' => 2021,
+            'socket' => 'LGA 1200',
+            'launch' => '2021'
         ]);
 
         Processor::create([
@@ -67,8 +67,8 @@ class DatabaseSeeder extends Seeder
             'boost_clock' => 5.1,
             'cache' => 16,
             'tdp' => 65,
-            'socket' =>'LGA 1200',
-            'launch' => 2021,
+            'socket' => 'LGA 1200',
+            'launch' => '2021'
         ]);
 
         Processor::create([
@@ -79,8 +79,8 @@ class DatabaseSeeder extends Seeder
             'boost_clock' => 5.1,
             'cache' => 16,
             'tdp' => 65,
-            'socket' =>'LGA 1200',
-            'launch' => 2021,
+            'socket' => 'LGA 1200',
+            'launch' => '2021'
         ]);
 
         Processor::create([
@@ -91,8 +91,8 @@ class DatabaseSeeder extends Seeder
             'boost_clock' => 4.9,
             'cache' => 16,
             'tdp' => 35,
-            'socket' =>'LGA 1200',
-            'launch' => 2021,
+            'socket' => 'LGA 1200',
+            'launch' => '2021'
         ]);
 
         Processor::create([
@@ -103,8 +103,8 @@ class DatabaseSeeder extends Seeder
             'boost_clock' => 5.0,
             'cache' => 16,
             'tdp' => 125,
-            'socket' =>'LGA 1200',
-            'launch' => 2021,
+            'socket' => 'LGA 1200',
+            'launch' => '2021'
         ]);
         Processor::create([
             'title' => 'Core i7	11700KF',
@@ -114,8 +114,8 @@ class DatabaseSeeder extends Seeder
             'boost_clock' => 5.0,
             'cache' => 16,
             'tdp' => 125,
-            'socket' =>'LGA 1200',
-            'launch' => 2021,
+            'socket' => 'LGA 1200',
+            'launch' => '2021'
         ]);
 
         Processor::create([
@@ -126,8 +126,8 @@ class DatabaseSeeder extends Seeder
             'boost_clock' => 4.9,
             'cache' => 16,
             'tdp' => 65,
-            'socket' =>'LGA 1200',
-            'launch' => 2021,
+            'socket' => 'LGA 1200',
+            'launch' => '2021'
         ]);
 
         Processor::create([
@@ -138,8 +138,8 @@ class DatabaseSeeder extends Seeder
             'boost_clock' => 4.9,
             'cache' => 16,
             'tdp' => 65,
-            'socket' =>'LGA 1200',
-            'launch' => 2021,
+            'socket' => 'LGA 1200',
+            'launch' => '2021'
         ]);
 
         Processor::create([
@@ -150,8 +150,8 @@ class DatabaseSeeder extends Seeder
             'boost_clock' => 4.6,
             'cache' => 16,
             'tdp' => 35,
-            'socket' =>'LGA 1200',
-            'launch' => 2021,
+            'socket' => 'LGA 1200',
+            'launch' => '2021'
         ]);
     }
 }
