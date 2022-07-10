@@ -9,7 +9,7 @@
   <body>
     @include('components.navbar')
 
-    <div class="container-fluid py-4 px-4 bg-light">
+    <div class="container-fluid pt-4 px-4 bg-light">
       @yield('pageTitle')
     </div>
 

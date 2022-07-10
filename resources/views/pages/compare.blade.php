@@ -1,8 +1,8 @@
 @extends('layouts.main')
   
 @section('pageTitle')
-    <div class="row row-cols-1">
-      <div class="col-4 d-flex align-items-stretch">
+    <div class="row">
+      <div class="col-md-4 col-sm-12 mb-4">
         <div class="col card shadow bg-body rounded p-0">
           <div class="card-header text-white fs-5" style="background-color: #0d6efd">PREFERENCE</div>
           <div class="card-body">
@@ -38,11 +38,11 @@
           </div>
         </div>
       </div>
-      <div class="col-8 d-flex align-items-stretch">
+      <div class="col-md-8 col-sm-12 d-flex align-items-stretch mb-4">
         <div class="col card shadow bg-body rounded p-0">
           <div class="card-header text-white fs-5" style="background-color: #0d6efd">PROCESSOR</div>
           <div class="card-body">
-            <table class="table my-0">
+            <table class="table table-responsive-lg my-0">
               <thead>
                 <tr>
                   <th class="text-center"><p class="title px-0 py-0 mx-0 my-0">Rank</p></th>
