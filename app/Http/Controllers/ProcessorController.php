@@ -12,6 +12,7 @@ class ProcessorController extends Controller
         
         $title = 'Compare';
         $active = 'Compare';
+
         $weight = [
             $request->priceWeight ? $request->priceWeight : 1,
             $request->coreWeight ? $request->coreWeight : 1,
@@ -20,7 +21,21 @@ class ProcessorController extends Controller
             $request->cacheWeight ? $request->cacheWeight : 1,
             $request->tdpWeight ? $request->tdpWeight : 1,
         ];
-        $processors = Processor::all();
+
+        $filter = [
+            'lowestPrice' => $request->lowestPrice,
+            'higestPrice' => $request->higestPrice,
+            'socket' => $request->socket,
+            'launch' => $request->launchYear,
+        ];
+// where('socket', ['LGA 1200', "sdfghj"])
+        $processors = Processor::where('launch', [])->get();
+        $higestPrice = Processor::max('price');
+        $sockets = Processor::select('socket')->distinct()->get();
+        $launchs = Processor::select('launch')->distinct()->get();
+
+        
+
         $criterias = [
             'id',
             'title',
@@ -33,6 +48,7 @@ class ProcessorController extends Controller
             'socket',
             'launch',
         ];
+
         $calculatedCriterias = [
             'price',
             'core',
@@ -41,6 +57,7 @@ class ProcessorController extends Controller
             'cache',
             'tdp',
         ];
+
         $costBenefit = ['n', 'n', 'c', 'b', 'b', 'b', 'b', 'b', 'n', 'n'];
         $cMin = [1000, 1000, 1000, 1000, 1000, 1000];
         $cMax = [0, 0, 0, 0, 0, 0];
@@ -165,8 +182,20 @@ class ProcessorController extends Controller
         array_multisort($columns, SORT_DESC, $calculationResults);
 
         // var_dump($calculationResults);
+        // var_dump($sockets);
+        // var_dump($launchs);
+        // var_dump($request->socket);
 
 
-        return view('pages.compare', compact('title', 'active', 'calculationResults', 'weight'));
+        return view('pages.compare', compact(
+            'title', 
+            'active', 
+            'calculationResults', 
+            'weight', 
+            'filter', 
+            'higestPrice',
+            'sockets', 
+            'launchs')
+        );
     }
 }

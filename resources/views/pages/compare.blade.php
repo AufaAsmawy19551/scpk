@@ -7,10 +7,46 @@
           <div class="card-header text-white fs-5" style="background-color: #0d6efd">PREFERENCE</div>
           <div class="card-body">
 
-            <form method="get" action="/compare">
+            <form method="head" action="/compare">
               <div class="row">
                 <div class="col-8">
                   <h5 class="card-title">Filtering</h5>
+                  <div class="row">
+                    <div class="col">
+                      <label>Lowest Price ($)</label>
+                      <input type="number" min="0" step="1" value="0" name="lowestPrice" placeholder="Lowest Price" class="form-control">
+                    </div>
+                    <div class="col">
+                      <label>Higest Price ($)</label>
+                      <input type="number" min="0" step="1" value="{{ $filter['higestPrice'] ? $filter['higestPrice'] : $higestPrice; }}" name="higestPrice" placeholder="Higest Price" class="form-control">
+                    </div>
+                  </div>
+                  <label>Socket</label>
+                  <select class="form-control" name="socket">
+                    <option value="">-- Select Socket --</option>
+                    <?php 
+                      foreach($sockets as $socket){
+                        if ($socket->socket == $filter['socket']) {
+                          echo "<option value='$socket->socket' selected='selected'>$socket->socket</option>";
+                        }else {
+                          echo "<option value='$socket->socket'>$socket->socket</option>";
+                        }
+                      }
+                    ?>
+                  </select>
+                  <label>Launch Year</label>
+                  <select class="form-control" name="launchYear">
+                    <option value="">-- Select Launch Year--</option>
+                    <?php 
+                      foreach($launchs as $launch){
+                        if ($launch->launch == $filter['launch']) {
+                          echo "<option value='$launch->launch' selected='selected'>$launch->launch</option>";
+                        }else {
+                          echo "<option value='$launch->launch'>$launch->launch</option>";
+                        }
+                      }
+                    ?>
+                  </select>
                 </div>
                 <div class="col-4">
                   <h5 class="card-title">Weighting</h5>

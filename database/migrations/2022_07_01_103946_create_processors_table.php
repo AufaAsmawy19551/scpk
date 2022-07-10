@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->bigInteger('cache');
             $table->bigInteger('tdp');
             $table->string('socket');
-            $table->year('launch');
+            $table->string('launch');
             $table->timestamps();
         });
     }
