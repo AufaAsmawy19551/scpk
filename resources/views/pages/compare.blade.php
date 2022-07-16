@@ -50,17 +50,17 @@
                 </div>
                 <div class="col-4">
                   <h5 class="card-title">Weighting</h5>
-                  <label>Price</label>
+                  <label>Price (C)</label>
                   <input type="number" min="0" step=".1" value="{{ $weight[0] }}" name="priceWeight" placeholder="Weight" class="form-control" required>
-                  <label>Core</label>
+                  <label>Core (B)</label>
                   <input type="number" min="0" step=".1" value="{{ $weight[1] }}" name="coreWeight" placeholder="Weight" class="form-control" required>
-                  <label>Thread</label>
+                  <label>Thread (B)</label>
                   <input type="number" min="0" step=".1" value="{{ $weight[2] }}" name="threadWeight" placeholder="Weight" class="form-control" required>
-                  <label>Boost Clock</label>
+                  <label>Boost Clock (B)</label>
                   <input type="number" min="0" step=".1" value="{{ $weight[3] }}" name="boostClockWeight" placeholder="Weight" class="form-control" required>
-                  <label>Cache</label>
+                  <label>Cache (B)</label>
                   <input type="number" min="0" step=".1" value="{{ $weight[4] }}" name="cacheWeight" placeholder="Weight" class="form-control" required>
-                  <label>TDP</label>
+                  <label>TDP (C)</label>
                   <input type="number" min="0" step=".1" value="{{ $weight[5] }}" name="tdpWeight" placeholder="Weight" class="form-control" required>
                 </div>
               </div>
