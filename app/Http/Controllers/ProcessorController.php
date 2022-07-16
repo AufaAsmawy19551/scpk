@@ -119,7 +119,7 @@ class ProcessorController extends Controller
         ];
 
         $costBenefit = ['n', 'n', 'c', 'b', 'b', 'b', 'b', 'c', 'n', 'n'];
-        $cMin = [1000, 1000, 1000, 1000, 1000, 1000];
+        $cMin = [10000, 10000, 10000, 10000, 10000, 10000];
         $cMax = [0, 0, 0, 0, 0, 0];
         $calculationResults = [];
 
@@ -143,7 +143,9 @@ class ProcessorController extends Controller
 
                 if ($data > $cMax[$counter]) {
                     $cMax[$counter] = $data;
-                } elseif ($data < $cMin[$counter]) {
+                } 
+                
+                if ($data < $cMin[$counter]) {
                     $cMin[$counter] = $data;
                 }
 
