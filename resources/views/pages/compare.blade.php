@@ -68,7 +68,7 @@
               <div class="d-flex justify-content-end mt-3">
                 <a href="/compare" class="btn btn-danger text-white mx-2"><i class="fa fa-redo text-white mr-2"></i>
                   RESET</a>
-                <button class="btn btn-primary text-white mr-1" type="submit"><i class="fa fa-paper-plane text-white mr-2"></i>
+                <button class="btn btn-primary text-white mr-1" type="submit"><i class="fa fa-search text-white mr-2"></i>
                   FIND</button>
               </div>
             </form>   
