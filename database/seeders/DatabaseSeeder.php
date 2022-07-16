@@ -23,18 +23,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Processor::create([
-        //     'title' =>'',
-        //     'price' =>,
-        //     'core' =>,
-        //     'thread' =>,
-        //     'boost_clock' =>,
-        //     'cache' =>,
-        //     'tdp' =>,
-        //     'socket' =>'',
-        //     'launch' =>
-        // ]);
-
         $processors = [
             ['Core i9 11900K',  539,    8,      16,	    5.2,    16,     125,    'LGA 1200', '2021'],
             ['Core i9 11900KF', 513,    8,      16,	    5.2,    16,     125,    'LGA 1200', '2021'],
