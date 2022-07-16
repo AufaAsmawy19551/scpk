@@ -23,7 +23,7 @@
                   </div>
                   <label>Socket</label>
                   <select class="form-control" name="socket">
-                    <option value="">-- Select Socket --</option>
+                    <option value="">-- All Sockets --</option>
                     <?php 
                       foreach($sockets as $socket){
                         if ($socket->socket == $filter['socket']) {
@@ -36,7 +36,7 @@
                   </select>
                   <label>Launch Year</label>
                   <select class="form-control" name="launchYear">
-                    <option value="">-- Select Launch Year--</option>
+                    <option value="">-- All Launch Years --</option>
                     <?php 
                       foreach($launchs as $launch){
                         if ($launch->launch == $filter['launch']) {
