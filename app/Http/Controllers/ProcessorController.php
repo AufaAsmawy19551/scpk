@@ -18,14 +18,14 @@ class ProcessorController extends Controller
         $sockets = Processor::select('socket')->distinct()->get();
         $launchs = Processor::select('launch')->distinct()->get();
 
-        $distincSockets = [];
+        $distinctSockets  = [];
         foreach($sockets as $socket){
-            array_push($distincSockets, $socket->socket);
+            array_push($distinctSockets , $socket->socket);
         }
 
-        $distincLaunchs = [];
+        $distinctLaunchs = [];
         foreach($launchs as $launch){
-            array_push($distincLaunchs, $launch->launch);
+            array_push($distinctLaunchs, $launch->launch);
         }
 
         $filter = [
@@ -51,34 +51,27 @@ class ProcessorController extends Controller
         }elseif ($request->launchYear == null) {
             $processors = Processor::
                 whereBetween('price', [$request->lowestPrice ?? $lowestPrice, $request->higestPrice ?? $higestPrice])
-                ->where('socket', $request->socket ?? $distincSockets)
+                ->where('socket', $request->socket ?? $distinctSockets )
                 ->get();
         }elseif ($request->socket == null){
             $processors = Processor::
                 whereBetween('price', [$request->lowestPrice ?? $lowestPrice, $request->higestPrice ?? $higestPrice])
-                ->where('launch', $request->launchYear ?? $distincLaunchs)
+                ->where('launch', $request->launchYear ?? $distinctLaunchs)
                 ->get();
         }else {
             $processors = Processor::
                 whereBetween('price', [$request->lowestPrice ?? $lowestPrice, $request->higestPrice ?? $higestPrice])
-                ->where('launch', $request->launchYear ?? $distincLaunchs)
-                ->where('socket', $request->socket ?? $distincSockets)
+                ->where('launch', $request->launchYear ?? $distinctLaunchs)
+                ->where('socket', $request->socket ?? $distinctSockets )
                 ->get();
         }
-
-        // $processors = Processor::
-        //         whereBetween('price', [$request->lowestPrice ?? $lowestPrice, $request->higestPrice ?? $higestPrice])
-        //         ->where('launch', $request->launchYear ?? $distincLaunchs)
-        //         ->where('socket', $request->socket ?? $distincSockets)
-        //         ->get();
-
         
         $calculationResults = ProcessorController::calculateSAW($processors, $weight);
 
         // var_dump($calculationResults);
         // var_dump($sockets);
         // var_dump($launchs);
-        // dd($request->launchYear ?? $distincLaunchs);
+        // dd($request->launchYear ?? $distinctLaunchs);
         // var_dump($processors);
 
         return view('pages.compare', compact(
