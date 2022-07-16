@@ -14,7 +14,7 @@
                   <div class="row">
                     <div class="col">
                       <label>Lowest Price ($)</label>
-                      <input type="number" min="0" step="1" value="0" name="lowestPrice" placeholder="Lowest Price" class="form-control">
+                      <input type="number" min="0" step="1" value="{{ $filter['lowestPrice'] ? $filter['lowestPrice'] : $lowestPrice; }}" name="lowestPrice" placeholder="Lowest Price" class="form-control">
                     </div>
                     <div class="col">
                       <label>Higest Price ($)</label>
@@ -81,17 +81,17 @@
             <table class="table table-responsive-lg my-0">
               <thead>
                 <tr>
-                  <th class="text-center"><p class="title px-0 py-0 mx-0 my-0">Rank</p></th>
-                  <th class="text-center"><p class="title px-0 py-0 mx-0 my-0">Score</p></th>
-                  <th class="text-left"><p class="title px-0 py-0 mx-0 my-0">Processor</p></th>
-                  <th class="text-center"><p class="title px-0 py-0 mx-0 my-0">Price</p></th>
-                  <th class="text-center"><p class="title px-0 py-0 mx-0 my-0">Cores</p></th>
-                  <th class="text-center"><p class="title px-0 py-0 mx-0 my-0">Threads</p></th>
-                  <th class="text-center"><p class="title px-0 py-0 mx-0 my-0">Boost Clock</p></th>
-                  <th class="text-center"><p class="title px-0 py-0 mx-0 my-0">Cache</p></th>
-                  <th class="text-center"><p class="title px-0 py-0 mx-0 my-0">TDP</p></th>
-                  <th class="text-center"><p class="title px-0 py-0 mx-0 my-0">Socket</p></th>
-                  <th class="text-center"><p class="title px-0 py-0 mx-0 my-0">Launch</p></th>
+                  <th class="text-center pt-0"><p class="title px-0 py-0 mx-0 my-0">Rank</p></th>
+                  <th class="text-center pt-0"><p class="title px-0 py-0 mx-0 my-0">Score</p></th>
+                  <th class="text-left pt-0"><p class="title px-0 py-0 mx-0 my-0">Processor</p></th>
+                  <th class="text-center pt-0"><p class="title px-0 py-0 mx-0 my-0">Price</p></th>
+                  <th class="text-center pt-0"><p class="title px-0 py-0 mx-0 my-0">Cores</p></th>
+                  <th class="text-center pt-0"><p class="title px-0 py-0 mx-0 my-0">Threads</p></th>
+                  <th class="text-center pt-0"><p class="title px-0 py-0 mx-0 my-0">Boost Clock</p></th>
+                  <th class="text-center pt-0"><p class="title px-0 py-0 mx-0 my-0">Cache</p></th>
+                  <th class="text-center pt-0"><p class="title px-0 py-0 mx-0 my-0">TDP</p></th>
+                  <th class="text-center pt-0"><p class="title px-0 py-0 mx-0 my-0">Socket</p></th>
+                  <th class="text-center pt-0"><p class="title px-0 py-0 mx-0 my-0">Launch</p></th>
                 </tr>
               </thead>
               <tbody>
@@ -114,7 +114,11 @@
                         <th class='text-center'><p class='fw-light px-0 py-0 mx-0 my-0'>".$calculationResult['launch']."</p></th>
                       </tr>
                     ";
+                    
                     $counter += 1;
+                    if ($counter > 15) {
+                      break;
+                    }
                   }
                 
                 ?>
